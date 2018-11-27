@@ -20,6 +20,7 @@ class LogIn extends Component {
             name='email'
             type='text'
             component='input'
+            required
           />
           <span>{this.props.errorMessage && this.props.errorMessage.email}</span>
         </fieldset>
@@ -29,6 +30,7 @@ class LogIn extends Component {
             name='password'
             type='password'
             component='input'
+            required
           />
           <span>{this.props.errorMessage && this.props.errorMessage.password}</span>
         </fieldset>
