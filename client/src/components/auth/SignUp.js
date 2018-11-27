@@ -26,7 +26,7 @@ class SignUp extends Component {
             type='text'
             component='input'
           />
-          <span>{this.props.errorMessage && this.props.errorMessage.email}</span>
+          <span> {this.props.errorMessage && this.props.errorMessage.email}</span>
         </fieldset>
         <fieldset>
           <label>Password:</label>
@@ -35,7 +35,7 @@ class SignUp extends Component {
             type='password'
             component='input'
           />
-          <span>{this.props.errorMessage && this.props.errorMessage.password}</span>
+          <span> {this.props.errorMessage && this.props.errorMessage.password}</span>
         </fieldset>
         <button>Sign Up!</button>
         </form>

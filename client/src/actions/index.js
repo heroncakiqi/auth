@@ -32,6 +32,7 @@ export const logout = () => {
 export const login = (formProps, callback) => async dispatch => {
   try {
     const res = await axios.post('http://localhost:6969/login', formProps);  
+    console.log(res.data);
     dispatch({
       type: AUTH_USER,
       payload: res.data.token
@@ -42,7 +43,7 @@ export const login = (formProps, callback) => async dispatch => {
    catch(err) {
      dispatch({
        type: AUTH_ERROR,
-       payload: err.response.data
+       payload: { password : err.response.data.error  }
      });
    }
 }
