@@ -1,7 +1,8 @@
 const jwt = require('jwt-simple');
 const validator = require('validator');
-
 const User = require('../models/User');
+const passportSevice = require('../services/passport');
+const passport = require('passport');
 const config = require('../config');
 
 // signun new users
@@ -24,9 +25,13 @@ exports.signup = async (req, res, next) => {
 }
 
 //login users
-exports.login = async (req, res) => {
-  const token = jwt.encode({ sub: req.user._id, iat: new Date().getTime() }, config.secret);
-  res.json({ token });
+exports.login = async (req, res, next) => {
+  passport.authenticate('local', { session: false },function(error, user, info) {
+    if (error) { return res.status(422).json({error}); }
+    if (!user) { return res.status(422).json({info}); }
+    const token = jwt.encode({ sub: user._id, iat: new Date().getTime() }, config.secret);
+    res.json({ token });
+  })(req, res, next);
 }
 
 

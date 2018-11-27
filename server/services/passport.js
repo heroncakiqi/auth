@@ -12,9 +12,9 @@ const User = require('../models/User');
 const localLogin = new LocalStrategy({usernameField: 'email'}, async (email, password, next) => {
   try {
   const user = await User.findOne({email: email});
-  if(!user) return next(null, false);
+  if(!user) return next("wrong email or password", false);
   const isMatch = await bcrypt.compare(password, user.password);
-  if(!isMatch) return next(null, false);
+  if(!isMatch) return next("wrong email or password", false);
   return next(null, user)
   } catch(err) {
     next(err, false);
