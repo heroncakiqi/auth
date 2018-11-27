@@ -10,6 +10,7 @@ import Feature from './components/Feature';
 import LogOut from './components/auth/LogOut';
 import LogIn from './components/auth/LogIn';
 import store from './store';
+import './App.css';
 
 class App extends Component {
   render() {

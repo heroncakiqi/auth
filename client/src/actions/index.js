@@ -46,3 +46,10 @@ export const login = (formProps, callback) => async dispatch => {
      });
    }
 }
+
+export const removeError = () => {
+  return {
+    type: AUTH_ERROR,
+    payload: ''
+  }
+}

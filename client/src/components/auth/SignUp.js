@@ -5,6 +5,11 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 class SignUp extends Component {
+  componentWillUnmount() {
+    if(this.props.errorMessage){
+      this.props.removeError();
+    }
+  }
   handleSubmit = (formProps) => {
     this.props.signup(formProps, () => {
       this.props.history.push('/feature');
